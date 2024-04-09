@@ -9,6 +9,8 @@ public class HipHopPizzaDbContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<User> Users { get; set; }
 
+    public DbSet<OrderItem> OrderItems { get; set; }
+
     public HipHopPizzaDbContext(DbContextOptions<HipHopPizzaDbContext> context) : base(context)
     {
 
@@ -37,5 +39,7 @@ public class HipHopPizzaDbContext : DbContext
             new User { Id = 2, Name = "Jean", Uid = 2 },
             new User { Id = 3, Name = "George", Uid = 3}
         });
+
+        
     }
 }

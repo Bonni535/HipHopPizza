@@ -47,9 +47,9 @@ if (app.Environment.IsDevelopment())
 }
 
 OrderItemApi.Map(app);
-UserAPI.Map(app);
-ItemApi.Map(app);
-OrderApi.Map(app);
+UserApi.Map(app);
+ItemAPI.Map(app);
+OrderAPI.Map(app);
 
 
 app.Run();
