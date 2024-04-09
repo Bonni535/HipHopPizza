@@ -12,8 +12,9 @@ namespace hip_hop_pizza.Models
         public int Total { get; set; }
         public int Tip { get; set; }
         public DateTime Date { get; set; }
-        public int UserId { get; set; } 
+        public int UserId { get; set; }
 
-        public ICollection<Item> Items { get; set; }
+        public List<OrderItem> Items { get; set; } = new List<OrderItem>();
+
     }
 }
