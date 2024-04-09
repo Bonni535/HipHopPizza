@@ -1,4 +1,5 @@
 using hip_hop_pizza.Models;
+using HipHopPizza.Dtos;
 //using hip_hop_pizza.Dtos;
 using Microsoft.EntityFrameworkCore;
 namespace HipHopPizza.API
@@ -31,7 +32,7 @@ namespace HipHopPizza.API
 
                 Item item = await _context.Items.FirstOrDefaultAsync(x => x.Id == addItemToOrderDto.ItemId);
 
-                OrderItem orderItem = await _context.OrderItem.FirstOrDefaultAsync(x => x.Item.Id == item.Id && x.Order.Id == order.Id);
+                OrderItem orderItem = await _context.OrderItems.FirstOrDefaultAsync(x => x.Item.Id == item.Id && x.Order.Id == order.Id);
 
 
                 order.Items.Remove(orderItem);

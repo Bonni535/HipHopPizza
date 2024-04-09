@@ -33,7 +33,7 @@ namespace HipHopPizza.API
                 
                 db.Items.Remove(item);
                 db.SaveChanges();
-                return Results.NoContent()
+                return Results.NoContent();
 
             });
 
