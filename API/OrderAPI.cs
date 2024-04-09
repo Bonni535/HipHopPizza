@@ -1,5 +1,5 @@
 using hip_hop_pizza.Models;
-//using hip_hop_pizza.Dtos;
+using HipHopPizza.Dtos;
 using Microsoft.EntityFrameworkCore;
 namespace HipHopPizza.API
 {
@@ -45,7 +45,21 @@ namespace HipHopPizza.API
             });
 
             // Update an Order
-            
+            app.MapPut("/orders", (HipHopPizzaDbContext db, int orderId, OrderDto updateOrder) =>
+            {
+                var orderToUpdate = db.Orders.Single(o => o.Id == orderId);
+                orderToUpdate.Name= updateOrder.Name;
+                orderToUpdate.Closed = updateOrder.Closed;
+                orderToUpdate.Phone = updateOrder.Phone;
+                orderToUpdate.Email = updateOrder.Email;
+                orderToUpdate.Type = updateOrder.Type;
+                orderToUpdate.PaymentType = updateOrder.PaymentType;
+                orderToUpdate.Total = updateOrder.Total;
+                orderToUpdate.Tip = updateOrder.Tip;
+                
+                db.SaveChanges();
+                return Results.Created($"/orders/{orderToUpdate.Id}", updateOrder);
+            });
         }
     }
 }
