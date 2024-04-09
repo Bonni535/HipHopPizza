@@ -2,6 +2,7 @@ using hip_hop_pizza.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
+using HipHopPizza.API;
 //using HipHopPizza.API;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+OrderItemApi.Map(app);
+UserAPI.Map(app);
+ItemApi.Map(app);
+OrderApi.Map(app);
 
 
 app.Run();
