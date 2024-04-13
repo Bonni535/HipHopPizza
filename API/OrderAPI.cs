@@ -49,7 +49,7 @@ namespace HipHopPizza.API
             {
                 var orderToUpdate = db.Orders.Single(o => o.Id == orderId);
                 orderToUpdate.Name= updateOrder.Name;
-                orderToUpdate.Closed = updateOrder.Closed;
+                orderToUpdate.IsClosed = updateOrder.Closed;
                 orderToUpdate.Phone = updateOrder.Phone;
                 orderToUpdate.Email = updateOrder.Email;
                 orderToUpdate.Type = updateOrder.Type;
@@ -60,6 +60,32 @@ namespace HipHopPizza.API
                 db.SaveChanges();
                 return Results.Created($"/orders/{orderToUpdate.Id}", updateOrder);
             });
+
+            // Close Order
+            app.MapPost("/orders/{orderId}/close", (HipHopPizzaDbContext db, int orderId, CloseOrderDto closeOrder) =>
+            {
+                var orderToClose = db.Orders.FirstOrDefault(o => o.Id == orderId);
+
+                if (orderToClose == null)
+                {
+                    return Results.NotFound("Sorry this Order couldn't be found.");
+                }
+
+                orderToClose.IsClosed = true;
+                orderToClose.Tip = closeOrder.Tip;
+                orderToClose.Date = closeOrder.Date;
+
+                db.SaveChanges();
+                return Results.Ok("This Order is Closed");
+            });
+
+            // Get Total Revenue
+           // app.MapGet("/revenue/total", (HipHopPizzaDbContext db) =>
+           // {
+             //   var totalRevenue = db.Orders.Sum(o => o.Total + o.Tip);
+
+          //      return Results.Ok(new object { Total = totalRevenue });
+          //  });
         }
     }
 }
