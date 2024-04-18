@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
 using HipHopPizza.API;
-//using HipHopPizza.API;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +50,7 @@ OrderItemApi.Map(app);
 UserApi.Map(app);
 ItemAPI.Map(app);
 OrderAPI.Map(app);
-
+RevenueAPI.Map(app);
 
 app.Run();
 
