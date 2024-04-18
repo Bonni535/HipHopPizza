@@ -48,10 +48,10 @@ namespace HipHopPizza.API
             app.MapPut("/orders", (HipHopPizzaDbContext db, int orderId, OrderDto updateOrder) =>
             {
                 var orderToUpdate = db.Orders.Single(o => o.Id == orderId);
-                orderToUpdate.Name= updateOrder.Name;
+                orderToUpdate.CustomerName= updateOrder.CustomerName;
                 orderToUpdate.IsClosed = updateOrder.Closed;
-                orderToUpdate.Phone = updateOrder.Phone;
-                orderToUpdate.Email = updateOrder.Email;
+                orderToUpdate.CustomerPhone = updateOrder.CustomerPhone;
+                orderToUpdate.CustomerEmail = updateOrder.CustomerEmail;
                 orderToUpdate.Type = updateOrder.Type;
                 orderToUpdate.PaymentType = updateOrder.PaymentType;
                 orderToUpdate.Total = updateOrder.Total;
@@ -73,7 +73,7 @@ namespace HipHopPizza.API
 
                 orderToClose.IsClosed = true;
                 orderToClose.Tip = closeOrder.Tip;
-                orderToClose.Date = closeOrder.Date;
+                orderToClose.CloseOrderDate = closeOrder.Date;
 
                 db.SaveChanges();
                 return Results.Ok("This Order is Closed");

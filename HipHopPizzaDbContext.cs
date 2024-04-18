@@ -30,8 +30,8 @@ public class HipHopPizzaDbContext : DbContext
         });
         modelBuilder.Entity<Order>().HasData(new Order[]
         {
-            new Order { Id = 1, Name = "Order1", IsClosed = true, Phone = 1234567, Email = "JdP@hotmail.com", Type = "Pick up", PaymentType = "Cash", Total = 46, Tip = 5, Date = new DateTime(2024, 02, 02), UserId = 1  },
-            new Order { Id = 2, Name = "Order2", IsClosed = false, Phone = 2345678, Email = "PizzaPazza@gmail.com", Type = "Online", PaymentType = "Credit Card", Total = 52, Tip = 7, Date = new DateTime(2024, 04, 06), UserId = 2}
+            new Order { Id = 1, CustomerName = "Order1", IsClosed = true, CustomerPhone = 1234567, CustomerEmail = "JdP@hotmail.com", Type = "Pick up", PaymentType = "Cash", Total = 46, Tip = 5, CloseOrderDate = new DateTime(2024, 02, 02), UserId = 1  },
+            new Order { Id = 2, CustomerName = "Order2", IsClosed = false, CustomerPhone = 2345678, CustomerEmail = "PizzaPazza@gmail.com", Type = "Online", PaymentType = "Credit Card", Total = 52, Tip = 7, CloseOrderDate = new DateTime(2024, 04, 06), UserId = 2}
         });
         modelBuilder.Entity<User>().HasData(new User[]
         {

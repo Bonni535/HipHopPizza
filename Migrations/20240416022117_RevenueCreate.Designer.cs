@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HipHopPizza.Migrations
 {
     [DbContext(typeof(HipHopPizzaDbContext))]
-    partial class HipHopPizzaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240416022117_RevenueCreate")]
+    partial class RevenueCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,23 +94,23 @@ namespace HipHopPizza.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CloseOrderDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("CustomerEmail")
+                    b.Property<string>("Email")
                         .HasColumnType("text");
-
-                    b.Property<string>("CustomerName")
-                        .HasColumnType("text");
-
-                    b.Property<int>("CustomerPhone")
-                        .HasColumnType("integer");
 
                     b.Property<bool>("IsClosed")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
                     b.Property<string>("PaymentType")
                         .HasColumnType("text");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("Tip")
                         .HasColumnType("numeric");
@@ -130,12 +132,12 @@ namespace HipHopPizza.Migrations
                         new
                         {
                             Id = 1,
-                            CloseOrderDate = new DateTime(2024, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerEmail = "JdP@hotmail.com",
-                            CustomerName = "Order1",
-                            CustomerPhone = 1234567,
+                            Date = new DateTime(2024, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "JdP@hotmail.com",
                             IsClosed = true,
+                            Name = "Order1",
                             PaymentType = "Cash",
+                            Phone = 1234567,
                             Tip = 5m,
                             Total = 46m,
                             Type = "Pick up",
@@ -144,12 +146,12 @@ namespace HipHopPizza.Migrations
                         new
                         {
                             Id = 2,
-                            CloseOrderDate = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CustomerEmail = "PizzaPazza@gmail.com",
-                            CustomerName = "Order2",
-                            CustomerPhone = 2345678,
+                            Date = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "PizzaPazza@gmail.com",
                             IsClosed = false,
+                            Name = "Order2",
                             PaymentType = "Credit Card",
+                            Phone = 2345678,
                             Tip = 7m,
                             Total = 52m,
                             Type = "Online",
